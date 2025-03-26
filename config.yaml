@@ -1,0 +1,58 @@
+license: "<< YOUR LICENSE >>"
+
+api:
+  replicaCount: 1
+
+buildkit:
+  network:
+    mode: host
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+
+daemonset:
+  enabled: false
+
+frontend:
+  replicaCount: 1
+
+okteto-nginx:
+  controller:
+    replicaCount: 1
+
+ingress-nginx:
+  controller:
+    replicaCount: 1
+    service:
+      type: ClusterIP
+      externalTrafficPolicy: ""
+
+defaultBackend:
+  replicaCount: 1
+
+registry:
+  replicaCount: 1
+  storage:
+    filesystem:
+      enabled: true
+      persistence:
+        enabled: true
+        accessMode: ReadWriteOnce
+        size: 40Gi
+
+regcredsManager:
+  replicas: 1
+
+resourceManager:
+  enabled: false
+
+sshAgent:
+  replicaCount: 1
+
+telemetry:
+  enabled: false
+
+webhook:
+  replicaCount: 1
